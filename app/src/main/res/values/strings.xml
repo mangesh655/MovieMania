@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MovieMania</string>
+    <string name="language_code">en</string>
+    <string name="retry">Retry</string>
+    <string name="no_image">No Image</string>
+    <string name="error_api_key_null">TMDB API key is null</string>
+    <string name="error_loading">Error while loading movies</string>
+    <string name="error_check_internet_connectivity">Check Internet Connectivity</string>
+    <string name="tile_title">Movies</string>
+    <string name="tile_added">Movies Tile added</string>
+    <string name="details_title">Movie Details</string>
+    <string name="details_error_loading">Error while loading</string>
+    <string name="share_via">Share via</string>
+</resources>
