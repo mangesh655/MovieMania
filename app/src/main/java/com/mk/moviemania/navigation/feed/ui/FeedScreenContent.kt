@@ -153,7 +153,24 @@ private fun FeedScreenContent(
     val lazyListState = rememberLazyListState()
     val lazyGridState = rememberLazyGridState()
     val lazyStaggeredGridState = rememberLazyStaggeredGridState()
+    val snackbarHostState = remember { SnackbarHostState() }
 
+    val onShowSnackbar: (String, SnackbarDuration) -> Unit = { message, snackbarDuration ->
+        scope.launch {
+            snackbarHostState.currentSnackbarData?.dismiss()
+            val snackbarResult = snackbarHostState.showSnackbar(
+                message = message,
+                duration = snackbarDuration
+            )
+            if (snackbarResult == SnackbarResult.Dismissed) {
+                //onSnackbarDismissed()
+            }
+        }
+    }
+
+    if (networkStatus != NetworkStatus.Available) {
+        onShowSnackbar(stringResource(R.string.error_api_key_null), SnackbarDuration.Long)
+    }
 
     if (networkStatus == NetworkStatus.Available && pagingItems.isFailure && pagingItems.refreshThrowable is UnknownHostException) {
         pagingItems.retry()
